@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Good habits</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Your habits</h1>
+<div class="habits" th:each="habit: ${habits}">
+    <a th:href="@{http://localhost:8080/habits/good/{id}(id=${habit.getId()})}">
+        <div class="habit">
+            <div class="data-container">
+                <p class="name-value" th:text="${habit.getName()}"></p>
+                <div class="num-value">
+                    <p class="percent-value" th:text="${habit.getProgressPercent()}"></p>
+                    <p class="done-to-all-value"
+                       th:text="'(' + ${habit.getProgress()} + '/' +${habit.getGoal()} + ')'"></p>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </a>
+</div>
+<script th:src="@{/js/progress.js}"></script>
+<h2><a th:href="@{http://localhost:8080/habits/good/new}">Add new habit</a></h2>
+</body>
+</html>

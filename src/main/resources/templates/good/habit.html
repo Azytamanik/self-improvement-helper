@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p th:text="${habit.getId()}"></p>
+    <p th:text="${habit.getName()}"></p>
+    <p th:text="${habit.getStart()}"></p>
+    <p th:text="${habit.getGoal()}"></p>
+    <p th:text="${habit.isCompleted()}"></p>
+    <p th:text="${habit.getProgress()}"></p>
+    <p th:text="${habit.getProgressPercent()}"></p>
+    <h1>Progress</h1>
+    <div th:each="date : ${dates}">
+        <p th:text="${date.key}">key</p>
+        <p th:text="${date.value}">value</p>
+        <form th:method="PATCH" th:action="@{/habits/good/{id}/{date}/done(date=${date.key},id=${habit.getId})}">
+            <input type="submit" value="Done">
+        </form>
+        <form th:method="PATCH" th:action="@{/habits/good/{id}/{date}/failed(date=${date.key},id=${habit.getId})}">
+            <input type="submit" value="Failed">
+        </form>
+        <hr>
+    </div>
+</div>
+<br>
+<a th:href="@{http://localhost:8080/habits/good/edit/{id}(id=${habit.getId()})}">Edit habit</a>
+<form th:method="DELETE" th:action="@{/habits/good/{id}(id=${habit.getId})}">
+    <input type="submit" value="Delete habit"/>
+</form>
+<h2><a th:href="@{http://localhost:8080/habits/good}">To previous menu</a></h2>
+</body>
+</html>

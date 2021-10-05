@@ -1,0 +1,43 @@
+body {
+    text-align:center;
+}
+
+.habits {
+    height: 200px;
+    width: 75%;
+    border: dotted 3px black;
+    background: azure;
+    margin: auto auto 10px;
+}
+.habits a {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.progress-container {
+    margin: auto;
+    height: 1.4rem;
+    width: 95%;
+    border-radius: 0.4rem;
+
+    background: #000;
+}
+
+.progress-container .progress {
+    height: 100%;
+    width: 0;
+    border-radius: 0.4rem;
+
+    background: rgb(255,0,0);
+
+    transition: width 0.4s ease;
+}
+
+.habit {
+
+}
+
+.data-container {
+
+}

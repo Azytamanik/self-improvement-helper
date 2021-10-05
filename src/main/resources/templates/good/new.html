@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add habit</title>
+</head>
+<body>
+<h1>Add new habit</h1>
+<form th:method="POST" th:action="@{/habits/good/new}" th:object="${habit}" >
+    <div>
+        <label for="name">Enter a name of habit</label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+        <br>
+        <label for="goal">Enter your goal</label>
+        <input type="number" th:field="*{goal}" id="goal"/>
+        <div style="color: red" th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}">Goal error</div>
+        <br>
+        <input type="submit" value="New Habit">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/habits/good/edit/{id}(id=${habit.getId()})}" th:object="${habit}">
+    <label for="name">New name:</label>
+    <input type="text" th:field="*{name}" id="name" th:value="${habit.getName()}"/>
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+    <br>
+
+    <label for="goal">New goal:</label>
+    <input type="number" th:field="*{goal}" id="goal" th:value="${habit.getGoal()}"/>
+    <div style="color: red" th:if="${#fields.hasErrors('goal')}" th:errors="*{goal}">Goal error</div>
+    <br>
+
+    <input type="submit" value="save">
+</form>
+</body>
+</html>
