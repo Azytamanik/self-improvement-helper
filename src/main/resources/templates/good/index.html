@@ -4,27 +4,75 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Good habits</title>
     <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<h1>Your habits</h1>
-<div class="habits" th:each="habit: ${habits}">
-    <a th:href="@{http://localhost:8080/habits/good/{id}(id=${habit.getId()})}">
-        <div class="habit">
-            <div class="data-container">
-                <p class="name-value" th:text="${habit.getName()}"></p>
-                <div class="num-value">
-                    <p class="percent-value" th:text="${habit.getProgressPercent()}"></p>
-                    <p class="done-to-all-value"
-                       th:text="'(' + ${habit.getProgress()} + '/' +${habit.getGoal()} + ')'"></p>
-                </div>
+<nav>
+    <p>Hello, ${username}</p>
+    <a href="index.html">Logout</a>
+</nav>
+<div class="page">
+    <div class="content">
+        <h1>Your habits</h1>
+        <div class="content-item">
+            <div id="btn-progress" class="btn-habit">
+                <p>Habits in progress</p>
+                <i class="large material-icons first-arrow">arrow_drop_down</i>
             </div>
-            <div class="progress-container">
-                <div class="progress"></div>
+            <div class="habits-progress habit" style="display: none;" th:each="habit: ${notCompletedHabits}">
+                <a th:href="@{http://localhost:8080/habits/good/{id}(id=${habit.getId()})}">
+
+                    <div class="data-container">
+                        <p class="name-value">
+                            <span th:text="${habit.getName()}"></span>
+                        </p>
+                        <div class="num-value">
+                            <p class="percent-value">
+                                <span class="percent-num-value" th:text="${habit.getProgressPercent()}"></span>
+                                <span class="percent"> %</span>
+                            </p>
+                            <p class="done-to-all-value"
+                               th:text="'(' + ${habit.getProgress()} + '/' +${habit.getGoal()} + ')'"></p>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                    </div>
+
+                </a>
             </div>
         </div>
-    </a>
+        <div class="content-item">
+            <div id="btn-completed" class="btn-habit">
+                <p>Completed habits</p>
+                <i class="large material-icons second-arrow">arrow_drop_down</i>
+            </div>
+            <div class="habits-completed habit" style="display: none;" th:each="habit: ${completedHabits}">
+                <a th:href="@{http://localhost:8080/habits/good/{id}(id=${habit.getId()})}">
+                    <div class="data-container">
+                        <p class="name-value" th:text="${habit.getName()}"></p>
+                        <div class="num-value">
+                            <p class="percent-value">
+                                <span class="percent-num-value" th:text="${habit.getProgressPercent()}"></span>
+                                <span class="percent"> %</span>
+                            </p>
+                            <p class="done-to-all-value"
+                               th:text="'(' + ${habit.getProgress()} + '/' +${habit.getGoal()} + ')'"></p>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="btn-wrapper">
+            <a class="btn-link" th:href="@{/habits/good/new}"><span>Add new habit</span></a>
+        </div>
+        <script th:src="@{/js/progress.js}"></script>
+        <script th:src="@{/js/hider.js}"></script>
+    </div>
 </div>
-<script th:src="@{/js/progress.js}"></script>
-<h2><a th:href="@{http://localhost:8080/habits/good/new}">Add new habit</a></h2>
 </body>
 </html>

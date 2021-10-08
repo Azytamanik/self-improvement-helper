@@ -1,21 +1,67 @@
-body {
-    text-align:center;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.habits {
+body {
+    text-align: center;
+    background: rgb(240, 240, 240);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    border-bottom: solid 1px;
+    opacity: 100%;
+    height: 50px;
+    background-color: lightgoldenrodyellow;
+}
+
+nav p {
+    position: relative;
+    right: 4%;
+}
+
+nav a {
+    position: relative;
+    right: 2%;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    width: 70%;
+    height: 100%;
+    background: white;
+}
+
+.habit {
     height: 200px;
     width: 75%;
-    border: dotted 3px black;
+    border: solid 1px black;
+    border-radius: 20px;
     background: azure;
     margin: auto auto 10px;
 }
-.habits a {
+
+.habit a {
     flex: 1;
     height: 100%;
     width: 100%;
+    text-decoration: none;
+    color: black;
 }
 
 .progress-container {
+    position: relative;
+    top: 10px;
     margin: auto;
     height: 1.4rem;
     width: 95%;
@@ -29,15 +75,119 @@ body {
     width: 0;
     border-radius: 0.4rem;
 
-    background: rgb(255,0,0);
+    background: rgb(255, 0, 0);
 
     transition: width 0.4s ease;
 }
 
-.habit {
+.btn-habit {
+    border: salmon solid 1px;
+    border-radius: 50px;
+    background: rgb(255, 160, 160);
+    width: 60%;
+    height: 70px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.btn-habit p {
+    font-size: 36px;
+}
+
+.btn-habit i {
+    position: absolute;
+    left: 1250px;
+    font-size: 72px;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 54px;
+}
+
+.content-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-link{
+    display: block;
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    background: rgb(120, 255, 255);
+    border: 1px solid white;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+}
+
+.btn-link span{
+    position: relative;
+    z-index: 2;
+}
+
+.btn-link:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgb(0, 255, 255);
+    transition: all .35s;
+}
+
+.btn-link:hover{
+    color: black;
+}
+
+.btn-link:hover:after{
+    width: 100%;
 }
 
 .data-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+}
 
+.name-value {
+    display: flex;
+    width: 75%;
+    font-size: 33px;
+    font-style: italic;
+    justify-content: center;
+}
+
+.num-value {
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.percent-value {
+    font-size: 27px;
+
+}
+
+.done-to-all-value {
+    font-size: 27px;
 }

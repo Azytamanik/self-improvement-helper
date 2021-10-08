@@ -1,6 +1,8 @@
 BACK-END:
 * good-habits realization:
 - nullify progress if day's progress failed;
+- make opportunity to set progress for current and previous days only;
+- disable progress updating for marked days;
 * bad-habits realization:
 * task-manager realization:
 * authentication realization:

@@ -13,21 +13,26 @@
 <div>
     <p th:text="${habit.getId()}"></p>
     <p th:text="${habit.getName()}"></p>
-    <p th:text="${habit.getStart()}"></p>
+    <p th:text="${habit.getStartHabit()}"></p>
+    <p th:text="${habit.getStartGoal()}"></p>
     <p th:text="${habit.getGoal()}"></p>
     <p th:text="${habit.isCompleted()}"></p>
     <p th:text="${habit.getProgress()}"></p>
     <p th:text="${habit.getProgressPercent()}"></p>
     <h1>Progress</h1>
     <div th:each="date : ${dates}">
-        <p th:text="${date.key}">key</p>
-        <p th:text="${date.value}">value</p>
-        <form th:method="PATCH" th:action="@{/habits/good/{id}/{date}/done(date=${date.key},id=${habit.getId})}">
-            <input type="submit" value="Done">
-        </form>
-        <form th:method="PATCH" th:action="@{/habits/good/{id}/{date}/failed(date=${date.key},id=${habit.getId})}">
-            <input type="submit" value="Failed">
-        </form>
+        <p th:text="${date.getDate()}">key</p>
+        <p th:text="${date.getState()}">value</p>
+        <div th:if="${date.state.name() == 'UNCHECKED'}">
+            <form th:method="PATCH"
+                  th:action="@{/habits/good/{id}/{date}/done(date=${date.getDate()},id=${habit.getId})}">
+                <input type="submit" value="Done">
+            </form>
+            <form th:method="PATCH"
+                  th:action="@{/habits/good/{id}/{date}/failed(date=${date.getDate()},id=${habit.getId})}">
+                <input type="submit" value="Failed">
+            </form>
+        </div>
         <hr>
     </div>
 </div>
